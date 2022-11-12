@@ -1,0 +1,79 @@
+#------------------------#
+# Bubble Sort
+# Author: Zach Burnaby
+# This program takes in a list of user-input integers and prints them sorted using bubble sort
+#------------------------#
+type Node {
+  var val = 0
+  var Node next = nil
+}
+
+type LinkedList {
+  var Node head = nil
+}
+
+fun void sortInput() {
+  print("Please enter integers to be sorted, enter 'done' when finished\n")
+  var string input = read()
+  var LinkedList list = new LinkedList
+  while (input != "done") {
+    addNode(list, stoi(input))
+    input = read()
+  }
+  print(listToString(list) + "\n")
+  bubbleSort(list)
+  print(listToString(list) + "\n")
+}
+
+fun string listToString(LinkedList list) {
+  var string out = ""
+  var Node node = list.head
+  while (node != nil) {
+    out = out + itos(node.val) + " -> "
+    node = node.next
+  }
+  return out
+}
+
+fun void addNode(LinkedList list, int n) {
+  if (list.head == nil) {
+    list.head = new Node
+    list.head.val = n
+    return
+  }
+  var Node node = list.head
+  while (node.next != nil) {
+    node = node.next
+  }
+  node.next = new Node
+  node.next.val = n
+}
+
+fun void bubbleSort(LinkedList list) {
+  # check if only 1 element
+  if (list.head.next == nil) {
+    return
+  }
+
+  var boolean aValueWasSwapped = true
+  var Node curr = nil
+  var Node second = nil
+  var int swap = nil
+
+  while (aValueWasSwapped) {
+    curr = list.head
+    second = curr.next
+    aValueWasSwapped = false
+    while (second != nil) {
+      if (curr.val > second.val) {
+        swap = second.val
+        second.val = curr.val
+        curr.val = swap
+        aValueWasSwapped = true
+      }
+      curr = second
+      second = second.next
+    }
+  }
+}
+
