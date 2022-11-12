@@ -165,7 +165,7 @@ public class REPL {
         System.out.println("\t:exit    => Exits the REPL");
         System.out.println("\t:help    => Show the help menu");
         System.out.println("\t:reset   => Resets the type environment");
-        System.out.println("\t:show => Shows declared types, functions, and variables");
+        System.out.println("\t:show    => Shows declared types, functions, and variables");
         System.out.println("\t:prev    => Runs previous input to the REPL");
         System.out.println("\t:load    => loads the given file into the REPL");
     }
