@@ -108,7 +108,7 @@ public class MyPL {
         program.accept(genVisitor);
         System.out.println(vm);
       }
-      else if (replMode) {
+      else if (replMode || argCount == 0) {
         REPL repl = new REPL();
         Scanner in = new Scanner(System.in);
         repl.run(in);
